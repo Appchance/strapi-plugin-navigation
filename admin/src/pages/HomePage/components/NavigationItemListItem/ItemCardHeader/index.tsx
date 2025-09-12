@@ -26,7 +26,7 @@ interface IProps {
   onItemRestore: VoidEffect;
   dragRef: MutableRefObject<HTMLHeadingElement>;
   isSearchActive?: boolean;
-  isAttached: boolean;
+  isAttached?: boolean;
 }
 
 const wrapperStyle = { zIndex: 2 };
