@@ -8,10 +8,10 @@ declare const clientService: (context: {
 }) => {
     readAll({ locale, orderBy, orderDirection }: ReadAllInput): Promise<{
         name: string;
-        locale: string;
         id: number;
         documentId: string;
         slug: string;
+        locale: string;
         visible: boolean;
         items?: import("../../schemas").NavigationItemDBSchema[] | undefined;
     }[]>;
@@ -32,11 +32,11 @@ declare const clientService: (context: {
         related: any;
         items: null;
         additionalFields: {};
+        path?: string | null | undefined;
         type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
         id: number;
         documentId: string;
         slug?: string | null | undefined;
-        path?: string | null | undefined;
         externalPath?: string | null | undefined;
         uiRouterKey: string;
         menuAttached: boolean;
@@ -55,11 +55,11 @@ declare const clientService: (context: {
         related: any;
         items: null;
         additionalFields: {};
+        path?: string | null | undefined;
         type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
         id: number;
         documentId: string;
         slug?: string | null | undefined;
-        path?: string | null | undefined;
         externalPath?: string | null | undefined;
         uiRouterKey: string;
         menuAttached: boolean;
@@ -78,11 +78,11 @@ declare const clientService: (context: {
         related: any;
         items: null;
         additionalFields: {};
+        path?: string | null | undefined;
         type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
         id: number;
         documentId: string;
         slug?: string | null | undefined;
-        path?: string | null | undefined;
         externalPath?: string | null | undefined;
         uiRouterKey: string;
         menuAttached: boolean;

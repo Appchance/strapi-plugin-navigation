@@ -6,10 +6,10 @@ export default function clientController(context: {
     getService(): {
         readAll({ locale, orderBy, orderDirection }: import("../services/client/types").ReadAllInput): Promise<{
             name: string;
-            locale: string;
             id: number;
             documentId: string;
             slug: string;
+            locale: string;
             visible: boolean;
             items?: import("../schemas").NavigationItemDBSchema[] | undefined;
         }[]>;
@@ -41,9 +41,9 @@ export default function clientController(context: {
             enabled?: boolean | undefined;
             multi?: false | undefined;
         } | {
+            options: string[];
             type: "select";
             name: string;
-            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -71,9 +71,9 @@ export default function clientController(context: {
             enabled?: boolean | undefined;
             multi?: false | undefined;
         } | {
+            options: string[];
             type: "select";
             name: string;
-            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -90,11 +90,11 @@ export default function clientController(context: {
             related: any;
             items: null;
             additionalFields: {};
+            path?: string | null | undefined;
             type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
             id: number;
             documentId: string;
             slug?: string | null | undefined;
-            path?: string | null | undefined;
             externalPath?: string | null | undefined;
             uiRouterKey: string;
             menuAttached: boolean;
@@ -113,11 +113,11 @@ export default function clientController(context: {
             related: any;
             items: null;
             additionalFields: {};
+            path?: string | null | undefined;
             type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
             id: number;
             documentId: string;
             slug?: string | null | undefined;
-            path?: string | null | undefined;
             externalPath?: string | null | undefined;
             uiRouterKey: string;
             menuAttached: boolean;
@@ -136,11 +136,11 @@ export default function clientController(context: {
             related: any;
             items: null;
             additionalFields: {};
+            path?: string | null | undefined;
             type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
             id: number;
             documentId: string;
             slug?: string | null | undefined;
-            path?: string | null | undefined;
             externalPath?: string | null | undefined;
             uiRouterKey: string;
             menuAttached: boolean;
@@ -153,10 +153,10 @@ export default function clientController(context: {
     };
     readAll(ctx: KoaContext): Promise<{
         name: string;
-        locale: string;
         id: number;
         documentId: string;
         slug: string;
+        locale: string;
         visible: boolean;
         items?: import("../schemas").NavigationItemDBSchema[] | undefined;
     }[] | KoaContext>;
@@ -169,11 +169,11 @@ export default function clientController(context: {
         related: any;
         items: null;
         additionalFields: {};
+        path?: string | null | undefined;
         type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
         id: number;
         documentId: string;
         slug?: string | null | undefined;
-        path?: string | null | undefined;
         externalPath?: string | null | undefined;
         uiRouterKey: string;
         menuAttached: boolean;
@@ -192,11 +192,11 @@ export default function clientController(context: {
         related: any;
         items: null;
         additionalFields: {};
+        path?: string | null | undefined;
         type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
         id: number;
         documentId: string;
         slug?: string | null | undefined;
-        path?: string | null | undefined;
         externalPath?: string | null | undefined;
         uiRouterKey: string;
         menuAttached: boolean;
