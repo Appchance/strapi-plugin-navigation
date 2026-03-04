@@ -102,9 +102,9 @@ declare const commonService: (context: {
             multi: import("zod").ZodBoolean;
             options: import("zod").ZodArray<import("zod").ZodString, "many">;
         }, "strip", import("zod").ZodTypeAny, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -112,9 +112,9 @@ declare const commonService: (context: {
             required?: boolean | undefined;
             enabled?: boolean | undefined;
         }, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -160,9 +160,9 @@ declare const commonService: (context: {
             enabled?: boolean | undefined;
             multi?: false | undefined;
         } | {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -204,9 +204,9 @@ declare const commonService: (context: {
             enabled?: boolean | undefined;
             multi?: false | undefined;
         } | {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -301,9 +301,9 @@ declare const commonService: (context: {
             multi: import("zod").ZodBoolean;
             options: import("zod").ZodArray<import("zod").ZodString, "many">;
         }, "strip", import("zod").ZodTypeAny, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -311,9 +311,9 @@ declare const commonService: (context: {
             required?: boolean | undefined;
             enabled?: boolean | undefined;
         }, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -359,9 +359,9 @@ declare const commonService: (context: {
             enabled?: boolean | undefined;
             multi?: false | undefined;
         } | {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -403,9 +403,9 @@ declare const commonService: (context: {
             enabled?: boolean | undefined;
             multi?: false | undefined;
         } | {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -434,7 +434,7 @@ declare const commonService: (context: {
         locale: import("zod").ZodString;
         visible: import("zod").ZodBoolean;
         items: import("zod").ZodArray<import("zod").ZodType<NavigationItemDBSchema, import("zod").ZodTypeDef, NavigationItemDBSchema>, "many"> | import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodType<NavigationItemDBSchema, import("zod").ZodTypeDef, NavigationItemDBSchema>, "many">>;
-    }, "id" | "documentId" | "slug" | "locale" | "items"> & {
+    }, "locale" | "id" | "documentId" | "slug" | "items"> & {
         documentId: import("zod").ZodOptional<import("zod").ZodString>;
         id: import("zod").ZodOptional<import("zod").ZodUndefined>;
     }, "strip", import("zod").ZodTypeAny, {
@@ -455,7 +455,7 @@ declare const commonService: (context: {
         locale: import("zod").ZodString;
         visible: import("zod").ZodBoolean;
         items: import("zod").ZodArray<import("zod").ZodType<NavigationItemDBSchema, import("zod").ZodTypeDef, NavigationItemDBSchema>, "many"> | import("zod").ZodOptional<import("zod").ZodArray<import("zod").ZodType<NavigationItemDBSchema, import("zod").ZodTypeDef, NavigationItemDBSchema>, "many">>;
-    }, "id" | "documentId" | "slug" | "locale" | "items"> & {
+    }, "locale" | "id" | "documentId" | "slug" | "items"> & {
         documentId: import("zod").ZodOptional<import("zod").ZodString>;
         id: import("zod").ZodOptional<import("zod").ZodUndefined>;
     }, "strip", import("zod").ZodTypeAny, {
@@ -543,9 +543,9 @@ declare const commonService: (context: {
         multi: import("zod").ZodBoolean;
         options: import("zod").ZodArray<import("zod").ZodString, "many">;
     }, "strip", import("zod").ZodTypeAny, {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
@@ -553,9 +553,9 @@ declare const commonService: (context: {
         required?: boolean | undefined;
         enabled?: boolean | undefined;
     }, {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
@@ -636,9 +636,9 @@ declare const commonService: (context: {
         multi: import("zod").ZodBoolean;
         options: import("zod").ZodArray<import("zod").ZodString, "many">;
     }, "strip", import("zod").ZodTypeAny, {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
@@ -646,9 +646,9 @@ declare const commonService: (context: {
         required?: boolean | undefined;
         enabled?: boolean | undefined;
     }, {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
@@ -730,9 +730,9 @@ declare const commonService: (context: {
         multi: import("zod").ZodBoolean;
         options: import("zod").ZodArray<import("zod").ZodString, "many">;
     }, "strip", import("zod").ZodTypeAny, {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
@@ -740,9 +740,9 @@ declare const commonService: (context: {
         required?: boolean | undefined;
         enabled?: boolean | undefined;
     }, {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
@@ -823,9 +823,9 @@ declare const commonService: (context: {
         multi: import("zod").ZodBoolean;
         options: import("zod").ZodArray<import("zod").ZodString, "many">;
     }, "strip", import("zod").ZodTypeAny, {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
@@ -833,9 +833,9 @@ declare const commonService: (context: {
         required?: boolean | undefined;
         enabled?: boolean | undefined;
     }, {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
@@ -845,50 +845,50 @@ declare const commonService: (context: {
     }>]>) => void;
     updateUpdateNavigationSchema: (modifier: (base: import("zod").ZodObject<{
         name: import("zod").ZodOptional<import("zod").ZodString>;
+        locale: import("zod").ZodOptional<import("zod").ZodString>;
         id: import("zod").ZodNumber;
         documentId: import("zod").ZodString;
         slug: import("zod").ZodOptional<import("zod").ZodString>;
-        locale: import("zod").ZodOptional<import("zod").ZodString>;
         visible: import("zod").ZodOptional<import("zod").ZodBoolean>;
         items: import("zod").ZodOptional<import("zod").ZodArray<import("../../schemas").UpdateNavigationItemSchema, "many">>;
     }, "strip", import("zod").ZodTypeAny, {
         id: number;
         documentId: string;
         name?: string | undefined;
-        slug?: string | undefined;
         locale?: string | undefined;
+        slug?: string | undefined;
         visible?: boolean | undefined;
         items?: Omit<NavigationItemDBSchema, "id" | "documentId" | "items" | "parent">[] | undefined;
     }, {
         id: number;
         documentId: string;
         name?: string | undefined;
-        slug?: string | undefined;
         locale?: string | undefined;
+        slug?: string | undefined;
         visible?: boolean | undefined;
         items?: Omit<NavigationItemDBSchema, "id" | "documentId" | "items" | "parent">[] | undefined;
     }>) => import("zod").ZodObject<{
         name: import("zod").ZodOptional<import("zod").ZodString>;
+        locale: import("zod").ZodOptional<import("zod").ZodString>;
         id: import("zod").ZodNumber;
         documentId: import("zod").ZodString;
         slug: import("zod").ZodOptional<import("zod").ZodString>;
-        locale: import("zod").ZodOptional<import("zod").ZodString>;
         visible: import("zod").ZodOptional<import("zod").ZodBoolean>;
         items: import("zod").ZodOptional<import("zod").ZodArray<import("../../schemas").UpdateNavigationItemSchema, "many">>;
     }, "strip", import("zod").ZodTypeAny, {
         id: number;
         documentId: string;
         name?: string | undefined;
-        slug?: string | undefined;
         locale?: string | undefined;
+        slug?: string | undefined;
         visible?: boolean | undefined;
         items?: Omit<NavigationItemDBSchema, "id" | "documentId" | "items" | "parent">[] | undefined;
     }, {
         id: number;
         documentId: string;
         name?: string | undefined;
-        slug?: string | undefined;
         locale?: string | undefined;
+        slug?: string | undefined;
         visible?: boolean | undefined;
         items?: Omit<NavigationItemDBSchema, "id" | "documentId" | "items" | "parent">[] | undefined;
     }>) => void;

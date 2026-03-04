@@ -14,29 +14,29 @@ export default function adminController(context: {
         configContentTypes({ viaSettingsPage, }: import("../services/admin/types").ConfigInput): Promise<import("../dtos").ConfigContentTypeDTO[]>;
         get({ ids, locale }: import("../services/admin/types").GetInput): Promise<{
             name: string;
+            locale: string;
             id: number;
             documentId: string;
             slug: string;
-            locale: string;
             visible: boolean;
             items?: import("../schemas").NavigationItemDBSchema[] | undefined;
         }[]>;
         getById({ documentId, locale, populate }: import("../services/admin/types").GetByIdInput): Promise<{
             name: string;
+            locale: string;
             id: number;
             documentId: string;
             slug: string;
-            locale: string;
             visible: boolean;
             items?: import("../schemas").NavigationItemDBSchema[] | undefined;
         }>;
         post({ auditLog, payload }: import("../services/admin/types").PostInput): Promise<import("../dtos").NavigationDTO>;
         put({ auditLog, payload }: import("../services/admin/types").PutInput): Promise<{
             name: string;
+            locale: string;
             id: number;
             documentId: string;
             slug: string;
-            locale: string;
             visible: boolean;
             items?: import("../schemas").NavigationItemDBSchema[] | undefined;
         }>;
@@ -47,10 +47,10 @@ export default function adminController(context: {
         updateConfig({ config: newConfig }: import("../services/admin/types").UpdateConfigInput): Promise<void>;
         fillFromOtherLocale({ auditLog, source, target, documentId, }: import("../services/admin/types").FillFromOtherLocaleInput): Promise<{
             name: string;
+            locale: string;
             id: number;
             documentId: string;
             slug: string;
-            locale: string;
             visible: boolean;
             items?: import("../schemas").NavigationItemDBSchema[] | undefined;
         }>;
@@ -121,9 +121,9 @@ export default function adminController(context: {
                 enabled?: boolean | undefined;
                 multi?: false | undefined;
             } | {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -172,9 +172,9 @@ export default function adminController(context: {
                 enabled?: boolean | undefined;
                 multi?: false | undefined;
             } | {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -266,9 +266,9 @@ export default function adminController(context: {
                 multi: z.ZodBoolean;
                 options: z.ZodArray<z.ZodString, "many">;
             }, "strip", z.ZodTypeAny, {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -276,9 +276,9 @@ export default function adminController(context: {
                 required?: boolean | undefined;
                 enabled?: boolean | undefined;
             }, {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -324,9 +324,9 @@ export default function adminController(context: {
                 enabled?: boolean | undefined;
                 multi?: false | undefined;
             } | {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -368,9 +368,9 @@ export default function adminController(context: {
                 enabled?: boolean | undefined;
                 multi?: false | undefined;
             } | {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -465,9 +465,9 @@ export default function adminController(context: {
                 multi: z.ZodBoolean;
                 options: z.ZodArray<z.ZodString, "many">;
             }, "strip", z.ZodTypeAny, {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -475,9 +475,9 @@ export default function adminController(context: {
                 required?: boolean | undefined;
                 enabled?: boolean | undefined;
             }, {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -523,9 +523,9 @@ export default function adminController(context: {
                 enabled?: boolean | undefined;
                 multi?: false | undefined;
             } | {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -567,9 +567,9 @@ export default function adminController(context: {
                 enabled?: boolean | undefined;
                 multi?: false | undefined;
             } | {
-                options: string[];
                 type: "select";
                 name: string;
+                options: string[];
                 label: string;
                 multi: boolean;
                 description?: string | undefined;
@@ -598,7 +598,7 @@ export default function adminController(context: {
             locale: z.ZodString;
             visible: z.ZodBoolean;
             items: z.ZodArray<z.ZodType<import("../schemas").NavigationItemDBSchema, z.ZodTypeDef, import("../schemas").NavigationItemDBSchema>, "many"> | z.ZodOptional<z.ZodArray<z.ZodType<import("../schemas").NavigationItemDBSchema, z.ZodTypeDef, import("../schemas").NavigationItemDBSchema>, "many">>;
-        }, "id" | "documentId" | "slug" | "locale" | "items"> & {
+        }, "locale" | "id" | "documentId" | "slug" | "items"> & {
             documentId: z.ZodOptional<z.ZodString>;
             id: z.ZodOptional<z.ZodUndefined>;
         }, "strip", z.ZodTypeAny, {
@@ -619,7 +619,7 @@ export default function adminController(context: {
             locale: z.ZodString;
             visible: z.ZodBoolean;
             items: z.ZodArray<z.ZodType<import("../schemas").NavigationItemDBSchema, z.ZodTypeDef, import("../schemas").NavigationItemDBSchema>, "many"> | z.ZodOptional<z.ZodArray<z.ZodType<import("../schemas").NavigationItemDBSchema, z.ZodTypeDef, import("../schemas").NavigationItemDBSchema>, "many">>;
-        }, "id" | "documentId" | "slug" | "locale" | "items"> & {
+        }, "locale" | "id" | "documentId" | "slug" | "items"> & {
             documentId: z.ZodOptional<z.ZodString>;
             id: z.ZodOptional<z.ZodUndefined>;
         }, "strip", z.ZodTypeAny, {
@@ -707,9 +707,9 @@ export default function adminController(context: {
             multi: z.ZodBoolean;
             options: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -717,9 +717,9 @@ export default function adminController(context: {
             required?: boolean | undefined;
             enabled?: boolean | undefined;
         }, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -800,9 +800,9 @@ export default function adminController(context: {
             multi: z.ZodBoolean;
             options: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -810,9 +810,9 @@ export default function adminController(context: {
             required?: boolean | undefined;
             enabled?: boolean | undefined;
         }, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -894,9 +894,9 @@ export default function adminController(context: {
             multi: z.ZodBoolean;
             options: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -904,9 +904,9 @@ export default function adminController(context: {
             required?: boolean | undefined;
             enabled?: boolean | undefined;
         }, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -987,9 +987,9 @@ export default function adminController(context: {
             multi: z.ZodBoolean;
             options: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -997,9 +997,9 @@ export default function adminController(context: {
             required?: boolean | undefined;
             enabled?: boolean | undefined;
         }, {
-            options: string[];
             type: "select";
             name: string;
+            options: string[];
             label: string;
             multi: boolean;
             description?: string | undefined;
@@ -1009,70 +1009,70 @@ export default function adminController(context: {
         }>]>) => void;
         updateUpdateNavigationSchema: (modifier: (base: z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
+            locale: z.ZodOptional<z.ZodString>;
             id: z.ZodNumber;
             documentId: z.ZodString;
             slug: z.ZodOptional<z.ZodString>;
-            locale: z.ZodOptional<z.ZodString>;
             visible: z.ZodOptional<z.ZodBoolean>;
             items: z.ZodOptional<z.ZodArray<import("../schemas").UpdateNavigationItemSchema, "many">>;
         }, "strip", z.ZodTypeAny, {
             id: number;
             documentId: string;
             name?: string | undefined;
-            slug?: string | undefined;
             locale?: string | undefined;
+            slug?: string | undefined;
             visible?: boolean | undefined;
             items?: Omit<import("../schemas").NavigationItemDBSchema, "id" | "documentId" | "items" | "parent">[] | undefined;
         }, {
             id: number;
             documentId: string;
             name?: string | undefined;
-            slug?: string | undefined;
             locale?: string | undefined;
+            slug?: string | undefined;
             visible?: boolean | undefined;
             items?: Omit<import("../schemas").NavigationItemDBSchema, "id" | "documentId" | "items" | "parent">[] | undefined;
         }>) => z.ZodObject<{
             name: z.ZodOptional<z.ZodString>;
+            locale: z.ZodOptional<z.ZodString>;
             id: z.ZodNumber;
             documentId: z.ZodString;
             slug: z.ZodOptional<z.ZodString>;
-            locale: z.ZodOptional<z.ZodString>;
             visible: z.ZodOptional<z.ZodBoolean>;
             items: z.ZodOptional<z.ZodArray<import("../schemas").UpdateNavigationItemSchema, "many">>;
         }, "strip", z.ZodTypeAny, {
             id: number;
             documentId: string;
             name?: string | undefined;
-            slug?: string | undefined;
             locale?: string | undefined;
+            slug?: string | undefined;
             visible?: boolean | undefined;
             items?: Omit<import("../schemas").NavigationItemDBSchema, "id" | "documentId" | "items" | "parent">[] | undefined;
         }, {
             id: number;
             documentId: string;
             name?: string | undefined;
-            slug?: string | undefined;
             locale?: string | undefined;
+            slug?: string | undefined;
             visible?: boolean | undefined;
             items?: Omit<import("../schemas").NavigationItemDBSchema, "id" | "documentId" | "items" | "parent">[] | undefined;
         }>) => void;
     };
     get(): Promise<{
         name: string;
+        locale: string;
         id: number;
         documentId: string;
         slug: string;
-        locale: string;
         visible: boolean;
         items?: import("../schemas").NavigationItemDBSchema[] | undefined;
     }[]>;
     post(ctx: KoaContext & KoaContextExtension): Promise<import("../dtos").NavigationDTO | KoaContext>;
     put(ctx: KoaContext & KoaContextExtension): Promise<{
         name: string;
+        locale: string;
         id: number;
         documentId: string;
         slug: string;
-        locale: string;
         visible: boolean;
         items?: import("../schemas").NavigationItemDBSchema[] | undefined;
     } | KoaContext>;
@@ -1084,10 +1084,10 @@ export default function adminController(context: {
     settingsRestart(): Promise<{}>;
     getById(ctx: KoaContext): Promise<{
         name: string;
+        locale: string;
         id: number;
         documentId: string;
         slug: string;
-        locale: string;
         visible: boolean;
         items?: import("../schemas").NavigationItemDBSchema[] | undefined;
     }>;
@@ -1096,10 +1096,10 @@ export default function adminController(context: {
     }[]>;
     fillFromOtherLocale(ctx: KoaContext): Promise<{
         name: string;
+        locale: string;
         id: number;
         documentId: string;
         slug: string;
-        locale: string;
         visible: boolean;
         items?: import("../schemas").NavigationItemDBSchema[] | undefined;
     }>;

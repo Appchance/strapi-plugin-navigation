@@ -17,20 +17,20 @@ export declare const getNavigationRepository: (context: {
 }) => {
     find({ filters, locale, limit, orderBy, populate }: FindInput): Promise<{
         name: string;
+        locale: string;
         id: number;
         documentId: string;
         slug: string;
-        locale: string;
         visible: boolean;
         items?: import("../schemas").NavigationItemDBSchema[] | undefined;
     }[]>;
     findOne({ locale, filters, populate }: FindOneInput): Promise<{
         items: import("../schemas").NavigationItemDBSchema[] | undefined;
         name: string;
+        locale: string;
         id: number;
         documentId: string;
         slug: string;
-        locale: string;
         visible: boolean;
     }>;
     save(navigation: (CreateNavigationSchema & {
@@ -40,10 +40,10 @@ export declare const getNavigationRepository: (context: {
         items?: never;
     })): Promise<{
         name: string;
+        locale: string;
         id: number;
         documentId: string;
         slug: string;
-        locale: string;
         visible: boolean;
         items?: import("../schemas").NavigationItemDBSchema[] | undefined;
     }>;

@@ -15,11 +15,11 @@ export declare const renderNavigationChild: ({ strapi, nexus }: any) => {
         related: any;
         items: null;
         additionalFields: {};
-        path?: string | null | undefined;
         type: "INTERNAL" | "EXTERNAL" | "WRAPPER";
         id: number;
         documentId: string;
         slug?: string | null | undefined;
+        path?: string | null | undefined;
         externalPath?: string | null | undefined;
         uiRouterKey: string;
         menuAttached: boolean;

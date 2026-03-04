@@ -24,9 +24,9 @@ export declare const configSetup: ({ strapi, forceDefault, }: {
         enabled?: boolean | undefined;
         multi?: false | undefined;
     } | {
-        options: string[];
         type: "select";
         name: string;
+        options: string[];
         label: string;
         multi: boolean;
         description?: string | undefined;
