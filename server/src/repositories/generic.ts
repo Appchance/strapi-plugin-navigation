@@ -16,11 +16,12 @@ export const getGenericRepository = (context: { strapi: Core.Strapi }, uid: UID.
       .findOne({ documentId, populate: parsePopulateQuery(populate), status, ...extra });
   },
 
-  findManyById(documentIds: string[], populate: any, status?: PublicationStatus) {
+  findManyById(documentIds: string[], populate: any, status?: PublicationStatus, locale?: string) {
     return context.strapi.documents(uid).findMany({
       where: { documentId: { $in: documentIds } },
       populate: parsePopulateQuery(populate),
       status,
+      locale,
     });
   },
 

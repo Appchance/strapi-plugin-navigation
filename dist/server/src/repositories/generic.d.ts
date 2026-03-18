@@ -5,7 +5,7 @@ export declare const getGenericRepository: (context: {
 }, uid: UID.ContentType) => {
     findFirst(populate: any, status?: PublicationStatus, extra?: any): import("@strapi/types/dist/modules/documents/result/document-engine").FindFirst<UID.ContentType, any>;
     findById(documentId: string, populate: any, status?: PublicationStatus, extra?: any): import("@strapi/types/dist/modules/documents/result/document-engine").FindOne<UID.ContentType, any>;
-    findManyById(documentIds: string[], populate: any, status?: PublicationStatus): import("@strapi/types/dist/modules/documents/result/document-engine").FindMany<UID.ContentType, {
+    findManyById(documentIds: string[], populate: any, status?: PublicationStatus, locale?: string): import("@strapi/types/dist/modules/documents/result/document-engine").FindMany<UID.ContentType, {
         readonly where: {
             readonly documentId: {
                 readonly $in: string[];
@@ -13,6 +13,7 @@ export declare const getGenericRepository: (context: {
         };
         readonly populate: any;
         readonly status: PublicationStatus | undefined;
+        readonly locale: string | undefined;
     }>;
     findMany(where: any, populate: any, status?: PublicationStatus, locale?: string): import("@strapi/types/dist/modules/documents/result/document-engine").FindMany<UID.ContentType, {
         readonly where: any;

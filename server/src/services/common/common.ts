@@ -63,8 +63,6 @@ const commonService = (context: { strapi: Core.Strapi }) => ({
     populate,
     status = 'published',
   }: MapToNavigationItemDTOInput): Promise<NavigationItemDTO[]> {
-    const result: NavigationItemDTO[] = [];
-
     const pluginStore = await this.getPluginStore();
     const config = await pluginStore
       .get({
@@ -72,54 +70,86 @@ const commonService = (context: { strapi: Core.Strapi }) => ({
       })
       .then(DynamicSchemas.configSchema.parse);
 
-    const extendedNavigationItems = await Promise.all(
-      navigationItems.map(async (item) => {
-        if (!item.related?.__type || !item.related.documentId) {
+    const mapBranch = async (
+      currentItems: NavigationItemDBSchema[],
+      currentParent?: NavigationItemDTO
+    ): Promise<NavigationItemDTO[]> => {
+      if (!currentItems.length) {
+        return [];
+      }
+
+      const relatedByType = currentItems.reduce<Record<string, Set<string>>>((acc, item) => {
+        const relatedType = item.related?.__type;
+        const relatedDocumentId = item.related?.documentId;
+
+        if (!relatedType || !relatedDocumentId) {
+          return acc;
+        }
+
+        acc[relatedType] ??= new Set<string>();
+        acc[relatedType].add(relatedDocumentId);
+
+        return acc;
+      }, {});
+
+      const resolvedRelatedByType = await Promise.all(
+        Object.entries(relatedByType).map(async ([relatedType, documentIds]) => {
+          const fieldsToPopulate = config.contentTypesPopulate[relatedType];
+          const repository = getGenericRepository({ strapi }, relatedType as UID.ContentType);
+          const relatedEntities = await repository.findManyById(
+            Array.from(documentIds),
+            fieldsToPopulate,
+            status,
+            locale
+          );
+          const relatedMap = new Map(
+            relatedEntities.map((entity: { documentId: string }) => [entity.documentId, entity])
+          );
+
+          return [relatedType, relatedMap] as const;
+        })
+      );
+
+      const relatedLookup = new Map(resolvedRelatedByType);
+
+      const extendedNavigationItems = currentItems.map((item) => {
+        const relatedType = item.related?.__type;
+        const relatedDocumentId = item.related?.documentId;
+
+        if (!relatedType || !relatedDocumentId) {
           return item;
         }
 
-        const fieldsToPopulate = config.contentTypesPopulate[item.related.__type];
+        const related = relatedLookup.get(relatedType)?.get(relatedDocumentId);
 
-        const repository = getGenericRepository({ strapi }, item.related.__type as UID.ContentType);
-
-        const related = await repository.findById(
-          item.related.documentId,
-          fieldsToPopulate,
-          status,
-          {
-            locale,
-          }
-        );
+        if (!related) {
+          return item;
+        }
 
         return {
           ...item,
           related: {
             ...related,
-            __type: item.related.__type,
-            documentId: item.related.documentId,
+            __type: relatedType,
+            documentId: relatedDocumentId,
           },
         };
-      })
-    );
+      });
 
-    for (const navigationItem of extendedNavigationItems) {
-      const { items = [], ...base } = navigationItem;
+      return await Promise.all(
+        extendedNavigationItems.map(async (navigationItem) => {
+          const { items = [], ...base } = navigationItem;
 
-      result.push({
-        ...base,
-        parent: parent ?? base.parent,
-        items: await this.mapToNavigationItemDTO({
-          navigationItems: items,
-          populate,
-          master,
-          parent: base as NavigationItemDTO,
-          locale,
-          status,
-        }),
-      } as NavigationItemDTO);
-    }
+          return {
+            ...base,
+            parent: currentParent ?? base.parent,
+            items: await mapBranch(items, base as NavigationItemDTO),
+          } as NavigationItemDTO;
+        })
+      );
+    };
 
-    return result;
+    return mapBranch(navigationItems, parent);
   },
 
   setDefaultConfig(): Promise<NavigationPluginConfigDBSchema> {
